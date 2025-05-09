@@ -13,3 +13,8 @@ abstract class UserModel with _$UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 }
+
+extension UserModelExtension on UserModel {
+  UserEntity toEntity() =>
+      UserEntity(userId: userId, id: id, name: name, image: image);
+}

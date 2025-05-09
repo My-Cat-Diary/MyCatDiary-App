@@ -14,3 +14,13 @@ abstract class ScheduleModel with _$ScheduleModel {
   factory ScheduleModel.fromJson(Map<String, dynamic> json) =>
       _$ScheduleModelFromJson(json);
 }
+
+extension ScheduleModelExtension on ScheduleModel {
+  ScheduleEntity toEntity() => ScheduleEntity(
+      id: id,
+      images: images,
+      title: title,
+      content: content,
+      day: day,
+      cat: cat.toEntity());
+}
