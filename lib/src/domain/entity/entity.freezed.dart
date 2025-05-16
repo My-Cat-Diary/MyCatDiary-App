@@ -21,6 +21,7 @@ mixin _$CatEntity {
   int get age;
   DateTime get birthDay;
   String get image;
+  int get userId;
 
   /// Create a copy of CatEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -28,9 +29,6 @@ mixin _$CatEntity {
   @pragma('vm:prefer-inline')
   $CatEntityCopyWith<CatEntity> get copyWith =>
       _$CatEntityCopyWithImpl<CatEntity>(this as CatEntity, _$identity);
-
-  /// Serializes this CatEntity to a JSON map.
-  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
@@ -43,17 +41,17 @@ mixin _$CatEntity {
             (identical(other.age, age) || other.age == age) &&
             (identical(other.birthDay, birthDay) ||
                 other.birthDay == birthDay) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, sex, age, birthDay, image);
+      Object.hash(runtimeType, id, name, sex, age, birthDay, image, userId);
 
   @override
   String toString() {
-    return 'CatEntity(id: $id, name: $name, sex: $sex, age: $age, birthDay: $birthDay, image: $image)';
+    return 'CatEntity(id: $id, name: $name, sex: $sex, age: $age, birthDay: $birthDay, image: $image, userId: $userId)';
   }
 }
 
@@ -68,7 +66,8 @@ abstract mixin class $CatEntityCopyWith<$Res> {
       String sex,
       int age,
       DateTime birthDay,
-      String image});
+      String image,
+      int userId});
 }
 
 /// @nodoc
@@ -89,6 +88,7 @@ class _$CatEntityCopyWithImpl<$Res> implements $CatEntityCopyWith<$Res> {
     Object? age = null,
     Object? birthDay = null,
     Object? image = null,
+    Object? userId = null,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -115,12 +115,16 @@ class _$CatEntityCopyWithImpl<$Res> implements $CatEntityCopyWith<$Res> {
           ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
               as String,
+      userId: null == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _CatEntity implements CatEntity {
   _CatEntity(
       {required this.id,
@@ -128,9 +132,8 @@ class _CatEntity implements CatEntity {
       required this.sex,
       required this.age,
       required this.birthDay,
-      required this.image});
-  factory _CatEntity.fromJson(Map<String, dynamic> json) =>
-      _$CatEntityFromJson(json);
+      required this.image,
+      required this.userId});
 
   @override
   final int id;
@@ -144,6 +147,8 @@ class _CatEntity implements CatEntity {
   final DateTime birthDay;
   @override
   final String image;
+  @override
+  final int userId;
 
   /// Create a copy of CatEntity
   /// with the given fields replaced by the non-null parameter values.
@@ -152,13 +157,6 @@ class _CatEntity implements CatEntity {
   @pragma('vm:prefer-inline')
   _$CatEntityCopyWith<_CatEntity> get copyWith =>
       __$CatEntityCopyWithImpl<_CatEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$CatEntityToJson(
-      this,
-    );
-  }
 
   @override
   bool operator ==(Object other) {
@@ -171,17 +169,17 @@ class _CatEntity implements CatEntity {
             (identical(other.age, age) || other.age == age) &&
             (identical(other.birthDay, birthDay) ||
                 other.birthDay == birthDay) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, sex, age, birthDay, image);
+      Object.hash(runtimeType, id, name, sex, age, birthDay, image, userId);
 
   @override
   String toString() {
-    return 'CatEntity(id: $id, name: $name, sex: $sex, age: $age, birthDay: $birthDay, image: $image)';
+    return 'CatEntity(id: $id, name: $name, sex: $sex, age: $age, birthDay: $birthDay, image: $image, userId: $userId)';
   }
 }
 
@@ -199,7 +197,8 @@ abstract mixin class _$CatEntityCopyWith<$Res>
       String sex,
       int age,
       DateTime birthDay,
-      String image});
+      String image,
+      int userId});
 }
 
 /// @nodoc
@@ -220,12 +219,216 @@ class __$CatEntityCopyWithImpl<$Res> implements _$CatEntityCopyWith<$Res> {
     Object? age = null,
     Object? birthDay = null,
     Object? image = null,
+    Object? userId = null,
   }) {
     return _then(_CatEntity(
       id: null == id
           ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      sex: null == sex
+          ? _self.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as String,
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as int,
+      birthDay: null == birthDay
+          ? _self.birthDay
+          : birthDay // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$CreateCatEntity {
+  String get name;
+  String get sex;
+  int get age;
+  DateTime get birthDay;
+  String get image;
+
+  /// Create a copy of CreateCatEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CreateCatEntityCopyWith<CreateCatEntity> get copyWith =>
+      _$CreateCatEntityCopyWithImpl<CreateCatEntity>(
+          this as CreateCatEntity, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CreateCatEntity &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.birthDay, birthDay) ||
+                other.birthDay == birthDay) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, sex, age, birthDay, image);
+
+  @override
+  String toString() {
+    return 'CreateCatEntity(name: $name, sex: $sex, age: $age, birthDay: $birthDay, image: $image)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CreateCatEntityCopyWith<$Res> {
+  factory $CreateCatEntityCopyWith(
+          CreateCatEntity value, $Res Function(CreateCatEntity) _then) =
+      _$CreateCatEntityCopyWithImpl;
+  @useResult
+  $Res call(
+      {String name, String sex, int age, DateTime birthDay, String image});
+}
+
+/// @nodoc
+class _$CreateCatEntityCopyWithImpl<$Res>
+    implements $CreateCatEntityCopyWith<$Res> {
+  _$CreateCatEntityCopyWithImpl(this._self, this._then);
+
+  final CreateCatEntity _self;
+  final $Res Function(CreateCatEntity) _then;
+
+  /// Create a copy of CreateCatEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? sex = null,
+    Object? age = null,
+    Object? birthDay = null,
+    Object? image = null,
+  }) {
+    return _then(_self.copyWith(
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      sex: null == sex
+          ? _self.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as String,
+      age: null == age
+          ? _self.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as int,
+      birthDay: null == birthDay
+          ? _self.birthDay
+          : birthDay // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      image: null == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _CreateCatEntity implements CreateCatEntity {
+  _CreateCatEntity(
+      {required this.name,
+      required this.sex,
+      required this.age,
+      required this.birthDay,
+      required this.image});
+
+  @override
+  final String name;
+  @override
+  final String sex;
+  @override
+  final int age;
+  @override
+  final DateTime birthDay;
+  @override
+  final String image;
+
+  /// Create a copy of CreateCatEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CreateCatEntityCopyWith<_CreateCatEntity> get copyWith =>
+      __$CreateCatEntityCopyWithImpl<_CreateCatEntity>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CreateCatEntity &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.birthDay, birthDay) ||
+                other.birthDay == birthDay) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, sex, age, birthDay, image);
+
+  @override
+  String toString() {
+    return 'CreateCatEntity(name: $name, sex: $sex, age: $age, birthDay: $birthDay, image: $image)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$CreateCatEntityCopyWith<$Res>
+    implements $CreateCatEntityCopyWith<$Res> {
+  factory _$CreateCatEntityCopyWith(
+          _CreateCatEntity value, $Res Function(_CreateCatEntity) _then) =
+      __$CreateCatEntityCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String name, String sex, int age, DateTime birthDay, String image});
+}
+
+/// @nodoc
+class __$CreateCatEntityCopyWithImpl<$Res>
+    implements _$CreateCatEntityCopyWith<$Res> {
+  __$CreateCatEntityCopyWithImpl(this._self, this._then);
+
+  final _CreateCatEntity _self;
+  final $Res Function(_CreateCatEntity) _then;
+
+  /// Create a copy of CreateCatEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? name = null,
+    Object? sex = null,
+    Object? age = null,
+    Object? birthDay = null,
+    Object? image = null,
+  }) {
+    return _then(_CreateCatEntity(
       name: null == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -267,9 +470,6 @@ mixin _$CommentEntity {
       _$CommentEntityCopyWithImpl<CommentEntity>(
           this as CommentEntity, _$identity);
 
-  /// Serializes this CommentEntity to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -284,7 +484,6 @@ mixin _$CommentEntity {
             (identical(other.user, user) || other.user == user));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, content, created, updated, communityId, user);
@@ -372,7 +571,7 @@ class _$CommentEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _CommentEntity implements CommentEntity {
   _CommentEntity(
       {required this.id,
@@ -381,8 +580,6 @@ class _CommentEntity implements CommentEntity {
       required this.updated,
       required this.communityId,
       required this.user});
-  factory _CommentEntity.fromJson(Map<String, dynamic> json) =>
-      _$CommentEntityFromJson(json);
 
   @override
   final int id;
@@ -406,13 +603,6 @@ class _CommentEntity implements CommentEntity {
       __$CommentEntityCopyWithImpl<_CommentEntity>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$CommentEntityToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -426,7 +616,6 @@ class _CommentEntity implements CommentEntity {
             (identical(other.user, user) || other.user == user));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, content, created, updated, communityId, user);
@@ -530,9 +719,6 @@ mixin _$UserEntity {
   $UserEntityCopyWith<UserEntity> get copyWith =>
       _$UserEntityCopyWithImpl<UserEntity>(this as UserEntity, _$identity);
 
-  /// Serializes this UserEntity to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -544,7 +730,6 @@ mixin _$UserEntity {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, userId, id, name, image);
 
@@ -602,15 +787,13 @@ class _$UserEntityCopyWithImpl<$Res> implements $UserEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _UserEntity implements UserEntity {
   _UserEntity(
       {required this.userId,
       required this.id,
       required this.name,
       required this.image});
-  factory _UserEntity.fromJson(Map<String, dynamic> json) =>
-      _$UserEntityFromJson(json);
 
   @override
   final int userId;
@@ -630,13 +813,6 @@ class _UserEntity implements UserEntity {
       __$UserEntityCopyWithImpl<_UserEntity>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$UserEntityToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -647,7 +823,6 @@ class _UserEntity implements UserEntity {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, userId, id, name, image);
 
@@ -724,9 +899,6 @@ mixin _$CommunityEntity {
       _$CommunityEntityCopyWithImpl<CommunityEntity>(
           this as CommunityEntity, _$identity);
 
-  /// Serializes this CommunityEntity to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -742,7 +914,6 @@ mixin _$CommunityEntity {
             (identical(other.user, user) || other.user == user));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, content, category, created, updated, user);
@@ -836,7 +1007,7 @@ class _$CommunityEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _CommunityEntity implements CommunityEntity {
   _CommunityEntity(
       {required this.id,
@@ -846,8 +1017,6 @@ class _CommunityEntity implements CommunityEntity {
       required this.created,
       required this.updated,
       required this.user});
-  factory _CommunityEntity.fromJson(Map<String, dynamic> json) =>
-      _$CommunityEntityFromJson(json);
 
   @override
   final int id;
@@ -873,13 +1042,6 @@ class _CommunityEntity implements CommunityEntity {
       __$CommunityEntityCopyWithImpl<_CommunityEntity>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$CommunityEntityToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -894,7 +1056,6 @@ class _CommunityEntity implements CommunityEntity {
             (identical(other.user, user) || other.user == user));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, content, category, created, updated, user);
@@ -991,6 +1152,551 @@ class __$CommunityEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
+mixin _$CommunityDetailEntity {
+  int get communityId;
+  String get title;
+  String get content;
+  List<String> get imageUrls;
+  String get category;
+  DateTime get createdAt;
+  DateTime get updatedAt;
+  UserEntity get user;
+  List<CommentEntity> get commentList;
+
+  /// Create a copy of CommunityDetailEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CommunityDetailEntityCopyWith<CommunityDetailEntity> get copyWith =>
+      _$CommunityDetailEntityCopyWithImpl<CommunityDetailEntity>(
+          this as CommunityDetailEntity, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CommunityDetailEntity &&
+            (identical(other.communityId, communityId) ||
+                other.communityId == communityId) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            const DeepCollectionEquality().equals(other.imageUrls, imageUrls) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality()
+                .equals(other.commentList, commentList));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      communityId,
+      title,
+      content,
+      const DeepCollectionEquality().hash(imageUrls),
+      category,
+      createdAt,
+      updatedAt,
+      user,
+      const DeepCollectionEquality().hash(commentList));
+
+  @override
+  String toString() {
+    return 'CommunityDetailEntity(communityId: $communityId, title: $title, content: $content, imageUrls: $imageUrls, category: $category, createdAt: $createdAt, updatedAt: $updatedAt, user: $user, commentList: $commentList)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CommunityDetailEntityCopyWith<$Res> {
+  factory $CommunityDetailEntityCopyWith(CommunityDetailEntity value,
+          $Res Function(CommunityDetailEntity) _then) =
+      _$CommunityDetailEntityCopyWithImpl;
+  @useResult
+  $Res call(
+      {int communityId,
+      String title,
+      String content,
+      List<String> imageUrls,
+      String category,
+      DateTime createdAt,
+      DateTime updatedAt,
+      UserEntity user,
+      List<CommentEntity> commentList});
+
+  $UserEntityCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class _$CommunityDetailEntityCopyWithImpl<$Res>
+    implements $CommunityDetailEntityCopyWith<$Res> {
+  _$CommunityDetailEntityCopyWithImpl(this._self, this._then);
+
+  final CommunityDetailEntity _self;
+  final $Res Function(CommunityDetailEntity) _then;
+
+  /// Create a copy of CommunityDetailEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? communityId = null,
+    Object? title = null,
+    Object? content = null,
+    Object? imageUrls = null,
+    Object? category = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? user = null,
+    Object? commentList = null,
+  }) {
+    return _then(_self.copyWith(
+      communityId: null == communityId
+          ? _self.communityId
+          : communityId // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrls: null == imageUrls
+          ? _self.imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      user: null == user
+          ? _self.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity,
+      commentList: null == commentList
+          ? _self.commentList
+          : commentList // ignore: cast_nullable_to_non_nullable
+              as List<CommentEntity>,
+    ));
+  }
+
+  /// Create a copy of CommunityDetailEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res> get user {
+    return $UserEntityCopyWith<$Res>(_self.user, (value) {
+      return _then(_self.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _CommunityDetailEntity implements CommunityDetailEntity {
+  _CommunityDetailEntity(
+      {required this.communityId,
+      required this.title,
+      required this.content,
+      required final List<String> imageUrls,
+      required this.category,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.user,
+      required final List<CommentEntity> commentList})
+      : _imageUrls = imageUrls,
+        _commentList = commentList;
+
+  @override
+  final int communityId;
+  @override
+  final String title;
+  @override
+  final String content;
+  final List<String> _imageUrls;
+  @override
+  List<String> get imageUrls {
+    if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageUrls);
+  }
+
+  @override
+  final String category;
+  @override
+  final DateTime createdAt;
+  @override
+  final DateTime updatedAt;
+  @override
+  final UserEntity user;
+  final List<CommentEntity> _commentList;
+  @override
+  List<CommentEntity> get commentList {
+    if (_commentList is EqualUnmodifiableListView) return _commentList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_commentList);
+  }
+
+  /// Create a copy of CommunityDetailEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CommunityDetailEntityCopyWith<_CommunityDetailEntity> get copyWith =>
+      __$CommunityDetailEntityCopyWithImpl<_CommunityDetailEntity>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CommunityDetailEntity &&
+            (identical(other.communityId, communityId) ||
+                other.communityId == communityId) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            const DeepCollectionEquality()
+                .equals(other._imageUrls, _imageUrls) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality()
+                .equals(other._commentList, _commentList));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      communityId,
+      title,
+      content,
+      const DeepCollectionEquality().hash(_imageUrls),
+      category,
+      createdAt,
+      updatedAt,
+      user,
+      const DeepCollectionEquality().hash(_commentList));
+
+  @override
+  String toString() {
+    return 'CommunityDetailEntity(communityId: $communityId, title: $title, content: $content, imageUrls: $imageUrls, category: $category, createdAt: $createdAt, updatedAt: $updatedAt, user: $user, commentList: $commentList)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$CommunityDetailEntityCopyWith<$Res>
+    implements $CommunityDetailEntityCopyWith<$Res> {
+  factory _$CommunityDetailEntityCopyWith(_CommunityDetailEntity value,
+          $Res Function(_CommunityDetailEntity) _then) =
+      __$CommunityDetailEntityCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int communityId,
+      String title,
+      String content,
+      List<String> imageUrls,
+      String category,
+      DateTime createdAt,
+      DateTime updatedAt,
+      UserEntity user,
+      List<CommentEntity> commentList});
+
+  @override
+  $UserEntityCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$CommunityDetailEntityCopyWithImpl<$Res>
+    implements _$CommunityDetailEntityCopyWith<$Res> {
+  __$CommunityDetailEntityCopyWithImpl(this._self, this._then);
+
+  final _CommunityDetailEntity _self;
+  final $Res Function(_CommunityDetailEntity) _then;
+
+  /// Create a copy of CommunityDetailEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? communityId = null,
+    Object? title = null,
+    Object? content = null,
+    Object? imageUrls = null,
+    Object? category = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? user = null,
+    Object? commentList = null,
+  }) {
+    return _then(_CommunityDetailEntity(
+      communityId: null == communityId
+          ? _self.communityId
+          : communityId // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrls: null == imageUrls
+          ? _self._imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      updatedAt: null == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      user: null == user
+          ? _self.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity,
+      commentList: null == commentList
+          ? _self._commentList
+          : commentList // ignore: cast_nullable_to_non_nullable
+              as List<CommentEntity>,
+    ));
+  }
+
+  /// Create a copy of CommunityDetailEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res> get user {
+    return $UserEntityCopyWith<$Res>(_self.user, (value) {
+      return _then(_self.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+mixin _$CreateCommunityEntity {
+  List<String> get imageUrls;
+  String get title;
+  String get content;
+  String get category;
+
+  /// Create a copy of CreateCommunityEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CreateCommunityEntityCopyWith<CreateCommunityEntity> get copyWith =>
+      _$CreateCommunityEntityCopyWithImpl<CreateCommunityEntity>(
+          this as CreateCommunityEntity, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CreateCommunityEntity &&
+            const DeepCollectionEquality().equals(other.imageUrls, imageUrls) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(imageUrls), title, content, category);
+
+  @override
+  String toString() {
+    return 'CreateCommunityEntity(imageUrls: $imageUrls, title: $title, content: $content, category: $category)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CreateCommunityEntityCopyWith<$Res> {
+  factory $CreateCommunityEntityCopyWith(CreateCommunityEntity value,
+          $Res Function(CreateCommunityEntity) _then) =
+      _$CreateCommunityEntityCopyWithImpl;
+  @useResult
+  $Res call(
+      {List<String> imageUrls, String title, String content, String category});
+}
+
+/// @nodoc
+class _$CreateCommunityEntityCopyWithImpl<$Res>
+    implements $CreateCommunityEntityCopyWith<$Res> {
+  _$CreateCommunityEntityCopyWithImpl(this._self, this._then);
+
+  final CreateCommunityEntity _self;
+  final $Res Function(CreateCommunityEntity) _then;
+
+  /// Create a copy of CreateCommunityEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? imageUrls = null,
+    Object? title = null,
+    Object? content = null,
+    Object? category = null,
+  }) {
+    return _then(_self.copyWith(
+      imageUrls: null == imageUrls
+          ? _self.imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _CreateCommunityEntity implements CreateCommunityEntity {
+  _CreateCommunityEntity(
+      {required final List<String> imageUrls,
+      required this.title,
+      required this.content,
+      required this.category})
+      : _imageUrls = imageUrls;
+
+  final List<String> _imageUrls;
+  @override
+  List<String> get imageUrls {
+    if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageUrls);
+  }
+
+  @override
+  final String title;
+  @override
+  final String content;
+  @override
+  final String category;
+
+  /// Create a copy of CreateCommunityEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CreateCommunityEntityCopyWith<_CreateCommunityEntity> get copyWith =>
+      __$CreateCommunityEntityCopyWithImpl<_CreateCommunityEntity>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CreateCommunityEntity &&
+            const DeepCollectionEquality()
+                .equals(other._imageUrls, _imageUrls) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_imageUrls),
+      title,
+      content,
+      category);
+
+  @override
+  String toString() {
+    return 'CreateCommunityEntity(imageUrls: $imageUrls, title: $title, content: $content, category: $category)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$CreateCommunityEntityCopyWith<$Res>
+    implements $CreateCommunityEntityCopyWith<$Res> {
+  factory _$CreateCommunityEntityCopyWith(_CreateCommunityEntity value,
+          $Res Function(_CreateCommunityEntity) _then) =
+      __$CreateCommunityEntityCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<String> imageUrls, String title, String content, String category});
+}
+
+/// @nodoc
+class __$CreateCommunityEntityCopyWithImpl<$Res>
+    implements _$CreateCommunityEntityCopyWith<$Res> {
+  __$CreateCommunityEntityCopyWithImpl(this._self, this._then);
+
+  final _CreateCommunityEntity _self;
+  final $Res Function(_CreateCommunityEntity) _then;
+
+  /// Create a copy of CreateCommunityEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? imageUrls = null,
+    Object? title = null,
+    Object? content = null,
+    Object? category = null,
+  }) {
+    return _then(_CreateCommunityEntity(
+      imageUrls: null == imageUrls
+          ? _self._imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
 mixin _$DiaryEntity {
   int get id;
   String get title;
@@ -1005,9 +1711,6 @@ mixin _$DiaryEntity {
   $DiaryEntityCopyWith<DiaryEntity> get copyWith =>
       _$DiaryEntityCopyWithImpl<DiaryEntity>(this as DiaryEntity, _$identity);
 
-  /// Serializes this DiaryEntity to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -1020,7 +1723,6 @@ mixin _$DiaryEntity {
             (identical(other.day, day) || other.day == day));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content,
       const DeepCollectionEquality().hash(images), day);
@@ -1089,7 +1791,7 @@ class _$DiaryEntityCopyWithImpl<$Res> implements $DiaryEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _DiaryEntity implements DiaryEntity {
   _DiaryEntity(
       {required this.id,
@@ -1098,8 +1800,6 @@ class _DiaryEntity implements DiaryEntity {
       required final List<String> images,
       required this.day})
       : _images = images;
-  factory _DiaryEntity.fromJson(Map<String, dynamic> json) =>
-      _$DiaryEntityFromJson(json);
 
   @override
   final int id;
@@ -1127,13 +1827,6 @@ class _DiaryEntity implements DiaryEntity {
       __$DiaryEntityCopyWithImpl<_DiaryEntity>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$DiaryEntityToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -1145,7 +1838,6 @@ class _DiaryEntity implements DiaryEntity {
             (identical(other.day, day) || other.day == day));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content,
       const DeepCollectionEquality().hash(_images), day);
@@ -1216,6 +1908,197 @@ class __$DiaryEntityCopyWithImpl<$Res> implements _$DiaryEntityCopyWith<$Res> {
 }
 
 /// @nodoc
+mixin _$CreateDiaryEntity {
+  String get title;
+  String get content;
+  List<String> get imageUrls;
+  DateTime get day;
+
+  /// Create a copy of CreateDiaryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $CreateDiaryEntityCopyWith<CreateDiaryEntity> get copyWith =>
+      _$CreateDiaryEntityCopyWithImpl<CreateDiaryEntity>(
+          this as CreateDiaryEntity, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CreateDiaryEntity &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            const DeepCollectionEquality().equals(other.imageUrls, imageUrls) &&
+            (identical(other.day, day) || other.day == day));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title, content,
+      const DeepCollectionEquality().hash(imageUrls), day);
+
+  @override
+  String toString() {
+    return 'CreateDiaryEntity(title: $title, content: $content, imageUrls: $imageUrls, day: $day)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $CreateDiaryEntityCopyWith<$Res> {
+  factory $CreateDiaryEntityCopyWith(
+          CreateDiaryEntity value, $Res Function(CreateDiaryEntity) _then) =
+      _$CreateDiaryEntityCopyWithImpl;
+  @useResult
+  $Res call(
+      {String title, String content, List<String> imageUrls, DateTime day});
+}
+
+/// @nodoc
+class _$CreateDiaryEntityCopyWithImpl<$Res>
+    implements $CreateDiaryEntityCopyWith<$Res> {
+  _$CreateDiaryEntityCopyWithImpl(this._self, this._then);
+
+  final CreateDiaryEntity _self;
+  final $Res Function(CreateDiaryEntity) _then;
+
+  /// Create a copy of CreateDiaryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? content = null,
+    Object? imageUrls = null,
+    Object? day = null,
+  }) {
+    return _then(_self.copyWith(
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrls: null == imageUrls
+          ? _self.imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      day: null == day
+          ? _self.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _CreateDiaryEntity implements CreateDiaryEntity {
+  _CreateDiaryEntity(
+      {required this.title,
+      required this.content,
+      required final List<String> imageUrls,
+      required this.day})
+      : _imageUrls = imageUrls;
+
+  @override
+  final String title;
+  @override
+  final String content;
+  final List<String> _imageUrls;
+  @override
+  List<String> get imageUrls {
+    if (_imageUrls is EqualUnmodifiableListView) return _imageUrls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_imageUrls);
+  }
+
+  @override
+  final DateTime day;
+
+  /// Create a copy of CreateDiaryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CreateDiaryEntityCopyWith<_CreateDiaryEntity> get copyWith =>
+      __$CreateDiaryEntityCopyWithImpl<_CreateDiaryEntity>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _CreateDiaryEntity &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            const DeepCollectionEquality()
+                .equals(other._imageUrls, _imageUrls) &&
+            (identical(other.day, day) || other.day == day));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title, content,
+      const DeepCollectionEquality().hash(_imageUrls), day);
+
+  @override
+  String toString() {
+    return 'CreateDiaryEntity(title: $title, content: $content, imageUrls: $imageUrls, day: $day)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$CreateDiaryEntityCopyWith<$Res>
+    implements $CreateDiaryEntityCopyWith<$Res> {
+  factory _$CreateDiaryEntityCopyWith(
+          _CreateDiaryEntity value, $Res Function(_CreateDiaryEntity) _then) =
+      __$CreateDiaryEntityCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String title, String content, List<String> imageUrls, DateTime day});
+}
+
+/// @nodoc
+class __$CreateDiaryEntityCopyWithImpl<$Res>
+    implements _$CreateDiaryEntityCopyWith<$Res> {
+  __$CreateDiaryEntityCopyWithImpl(this._self, this._then);
+
+  final _CreateDiaryEntity _self;
+  final $Res Function(_CreateDiaryEntity) _then;
+
+  /// Create a copy of CreateDiaryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? title = null,
+    Object? content = null,
+    Object? imageUrls = null,
+    Object? day = null,
+  }) {
+    return _then(_CreateDiaryEntity(
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      content: null == content
+          ? _self.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrls: null == imageUrls
+          ? _self._imageUrls
+          : imageUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      day: null == day
+          ? _self.day
+          : day // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
 mixin _$ScheduleEntity {
   int get id;
   List<String> get images;
@@ -1232,9 +2115,6 @@ mixin _$ScheduleEntity {
       _$ScheduleEntityCopyWithImpl<ScheduleEntity>(
           this as ScheduleEntity, _$identity);
 
-  /// Serializes this ScheduleEntity to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -1248,7 +2128,6 @@ mixin _$ScheduleEntity {
             (identical(other.cat, cat) || other.cat == cat));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id,
       const DeepCollectionEquality().hash(images), title, content, day, cat);
@@ -1336,7 +2215,7 @@ class _$ScheduleEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _ScheduleEntity implements ScheduleEntity {
   _ScheduleEntity(
       {required this.id,
@@ -1346,8 +2225,6 @@ class _ScheduleEntity implements ScheduleEntity {
       required this.day,
       required this.cat})
       : _images = images;
-  factory _ScheduleEntity.fromJson(Map<String, dynamic> json) =>
-      _$ScheduleEntityFromJson(json);
 
   @override
   final int id;
@@ -1377,13 +2254,6 @@ class _ScheduleEntity implements ScheduleEntity {
       __$ScheduleEntityCopyWithImpl<_ScheduleEntity>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$ScheduleEntityToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -1396,7 +2266,6 @@ class _ScheduleEntity implements ScheduleEntity {
             (identical(other.cat, cat) || other.cat == cat));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id,
       const DeepCollectionEquality().hash(_images), title, content, day, cat);
