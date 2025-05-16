@@ -9,7 +9,4 @@ abstract class DiaryEntity with _$DiaryEntity {
     required List<String> images,
     required DateTime day,
   }) = _DiaryEntity;
-
-  factory DiaryEntity.fromJson(Map<String, dynamic> json) =>
-      _$DiaryEntityFromJson(json);
 }

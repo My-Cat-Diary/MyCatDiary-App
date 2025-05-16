@@ -8,7 +8,4 @@ abstract class UserEntity with _$UserEntity {
     required String name,
     required String image,
   }) = _UserEntity;
-
-  factory UserEntity.fromJson(Map<String, dynamic> json) =>
-      _$UserEntityFromJson(json);
 }

@@ -11,7 +11,4 @@ abstract class CommunityEntity with _$CommunityEntity {
     required DateTime updated,
     required UserEntity user,
   }) = _CommunityEntity;
-
-  factory CommunityEntity.fromJson(Map<String, dynamic> json) =>
-      _$CommunityEntityFromJson(json);
 }
